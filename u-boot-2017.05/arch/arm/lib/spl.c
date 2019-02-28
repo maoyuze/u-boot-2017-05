@@ -13,7 +13,6 @@
 #include <image.h>
 #include <linux/compiler.h>
 
-#ifndef CONFIG_SPL_DM
 /* Pointer to as well as the global data structure for SPL */
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -22,7 +21,6 @@ DECLARE_GLOBAL_DATA_PTR;
  * pafches that rely on it. The global_data area is set up in crt0.S.
  */
 gd_t gdata __attribute__ ((section(".data")));
-#endif
 
 /*
  * In the context of SPL, board_init_f() prepares the hardware for execution

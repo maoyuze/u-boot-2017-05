@@ -17,7 +17,10 @@
 #include <linux/sizes.h>
 
 #define CONFIG_ARCH_CPU_INIT
+
+#if 0
 #define CONFIG_SKIP_LOWLEVEL_INIT
+#endif
 
 /* Keep L2 Cache Disabled */
 

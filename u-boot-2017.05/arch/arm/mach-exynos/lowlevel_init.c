@@ -37,6 +37,10 @@
 #include "common_setup.h"
 #include "exynos5_setup.h"
 
+extern void my_puts(char *p);
+extern system_clock_init_c();
+extern uart_asm_init();
+
 /* These are the things we can do during low-level init */
 enum {
 	DO_WAKEUP	= 1 << 0,
@@ -215,6 +219,7 @@ int do_lowlevel_init(void)
 
 	if (actions & DO_CLOCKS) {
 		system_clock_init();
+        //system_clock_init_c();
 #ifdef CONFIG_DEBUG_UART
 #if (defined(CONFIG_SPL_BUILD) && defined(CONFIG_SPL_SERIAL_SUPPORT)) || \
     !defined(CONFIG_SPL_BUILD)
@@ -222,6 +227,9 @@ int do_lowlevel_init(void)
 		debug_uart_init();
 #endif
 #endif
+        //uart_asm_init();
+        //while(1);
+        //my_puts("wa ha ha\n");
 		mem_ctrl_init(actions & DO_MEM_RESET);
 		tzpc_init();
 	}

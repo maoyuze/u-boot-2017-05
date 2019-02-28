@@ -24,6 +24,7 @@ else
 obj-y	+= relocate.o
 endif
 
+obj-y += spl.o
 obj-$(CONFIG_CPU_V7M) += cmd_boot.o
 obj-$(CONFIG_OF_LIBFDT) += bootm-fdt.o
 obj-$(CONFIG_CMD_BOOTI) += bootm.o

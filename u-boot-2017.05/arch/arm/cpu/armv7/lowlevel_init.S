@@ -15,6 +15,11 @@
 #include <config.h>
 #include <linux/linkage.h>
 
+.extern gdata
+
+ENTRY(s_init)
+mov pc,lr
+ENDPROC(s_init)
 ENTRY(lowlevel_init)
 	/*
 	 * Setup a temporary stack. Global data is not available yet.
@@ -33,7 +38,7 @@ ENTRY(lowlevel_init)
 	 * removed soon.
 	 */
 #ifdef CONFIG_SPL_BUILD
-	ldr	r9, =gdata
+	@ldr	r9, =gdata
 #else
 	sub	sp, sp, #GD_SIZE
 	bic	sp, sp, #7

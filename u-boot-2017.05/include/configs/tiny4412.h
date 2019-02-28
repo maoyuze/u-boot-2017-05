@@ -6,14 +6,14 @@
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-#ifndef __CONFIG_ORIGEN_H
-#define __CONFIG_ORIGEN_H
+#ifndef __CONFIG_TINY4412_H
+#define __CONFIG_TINY4412_H
 
 #include <configs/exynos4-common.h>
 
 /* High Level Configuration Options */
 #define CONFIG_EXYNOS4210		1	/* which is a EXYNOS4210 SoC */
-#define CONFIG_TINY4412			1	/* working with ORIGEN*/
+#define CONFIG_TINY4412			1	/* working with TINY4412*/
 
 #define CONFIG_SYS_DCACHE_OFF		1
 
