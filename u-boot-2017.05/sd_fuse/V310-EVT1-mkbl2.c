@@ -31,6 +31,7 @@ int main (int argc, char *argv[])
 	Buf = (char *)malloc(BufLen);
 	memset(Buf, 0x00, BufLen);
 
+    printf("open file:%s\n",argv[1]);
 	fp = fopen(argv[1], "rb");
 	if( fp == NULL)
 	{
@@ -45,21 +46,19 @@ int main (int argc, char *argv[])
 
 	if ( BufLen > fileLen )
 	{
+        #if 0
 		printf("Usage: unsupported size\n");
 		free(Buf);
 		fclose(fp);
 		return -1;
+        #endif
+        printf("BufLen > fileLen");
+        nbytes = fread(Buf, 1,fileLen, fp);
 	}
-
-	nbytes = fread(Buf, 1, BufLen, fp);
-
-	if ( nbytes != BufLen )
-	{
-		printf("source file read error\n");
-		free(Buf);
-		fclose(fp);
-		return -1;
-	}
+    else
+    {
+        nbytes = fread(Buf, 1, BufLen, fp);
+    }
 
 	fclose(fp);
 

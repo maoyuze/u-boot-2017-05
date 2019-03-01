@@ -38,6 +38,7 @@
 reset:
 	/* Allow the board to save important registers */
 	b	save_boot_params
+    
 save_boot_params_ret:
 #ifdef CONFIG_ARMV7_LPAE
 /*
@@ -82,7 +83,6 @@ switch_to_hypervisor_ret:
 	bl	cpu_init_cp15
 	bl	cpu_init_crit
 #endif
-
 	bl	_main
 
 /*------------------------------------------------------------------------------*/

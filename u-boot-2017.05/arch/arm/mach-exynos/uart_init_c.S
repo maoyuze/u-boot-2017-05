@@ -103,11 +103,11 @@ uart_asm_init:
 	ldr	r1, =UART_UDIVSLOT_VAL
 	str	r1, [r0, #UDIVSLOT_OFFSET]
 
-	@ldr	r1, =0x4f4f4f4f
-	@str	r1, [r0, #UTXH_OFFSET]		@'O'
+	ldr	r1, =0x4f4f4f4f
+	str	r1, [r0, #UTXH_OFFSET]		@'O'
 
-	@ldr	r1, =0x5b5b5b5b
-	@str	r1, [r0, #UTXH_OFFSET]		@'K'
+	ldr	r1, =0x4b
+	str	r1, [r0, #UTXH_OFFSET]		@'K'
 
 	mov	pc, lr
 

@@ -217,9 +217,11 @@ int do_lowlevel_init(void)
 	if (actions & DO_POWER)
 		set_ps_hold_ctrl();
 
+        system_clock_init_c();
+        uart_asm_init();
+        (*(volatile unsigned int *)0x110002e4) = 0xff;
 	if (actions & DO_CLOCKS) {
-		system_clock_init();
-        //system_clock_init_c();
+		//system_clock_init();
 #ifdef CONFIG_DEBUG_UART
 #if (defined(CONFIG_SPL_BUILD) && defined(CONFIG_SPL_SERIAL_SUPPORT)) || \
     !defined(CONFIG_SPL_BUILD)
@@ -230,8 +232,8 @@ int do_lowlevel_init(void)
         //uart_asm_init();
         //while(1);
         //my_puts("wa ha ha\n");
-		mem_ctrl_init(actions & DO_MEM_RESET);
-		tzpc_init();
+		//mem_ctrl_init(actions & DO_MEM_RESET);
+		//tzpc_init();
 	}
 
 	return actions & DO_WAKEUP;

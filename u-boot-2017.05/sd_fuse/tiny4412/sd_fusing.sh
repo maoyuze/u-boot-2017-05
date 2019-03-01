@@ -41,7 +41,7 @@ fi
 ####################################
 # check files
 
-E4412_UBOOT_SPL=/home/maoyuze/work/u-boot/u-boot-2017.05/spl
+E4412_UBOOT_SPL=../../spl/u-boot-spl.bin
 E4412_UBOOT=../../u-boot.bin
 MKBL2=../mkbl2
 
@@ -79,12 +79,12 @@ dd iflag=dsync oflag=dsync if=./bl2.bin of=$1 seek=$bl2_position
 #<u-boot fusing>
 echo "---------------------------------------"
 echo "u-boot fusing"
-dd iflag=dsync oflag=dsync if=${E4412_UBOOT} of=$1 seek=$uboot_position
+#dd iflag=dsync oflag=dsync if=${E4412_UBOOT} of=$1 seek=$uboot_position
 
 #<TrustZone S/W fusing>
 echo "---------------------------------------"
 echo "TrustZone S/W fusing"
-dd iflag=dsync oflag=dsync if=./E4412_tzsw.bin of=$1 seek=$tzsw_position
+#dd iflag=dsync oflag=dsync if=./E4412_tzsw.bin of=$1 seek=$tzsw_position
 
 #<flush to disk>
 sync
