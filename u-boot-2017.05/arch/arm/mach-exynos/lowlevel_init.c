@@ -40,6 +40,7 @@
 extern void my_puts(char *p);
 extern system_clock_init_c();
 extern uart_asm_init();
+extern void my_putc(char c);
 
 /* These are the things we can do during low-level init */
 enum {
@@ -219,7 +220,28 @@ int do_lowlevel_init(void)
 
         system_clock_init_c();
         uart_asm_init();
-        (*(volatile unsigned int *)0x110002e4) = 0xff;
+         mem_ctrl_asm_init();
+                                      
+         int *p = 0x40000004;
+         int *q = 0x40000004;
+         *p = 0x123456;
+                                      
+         if(*q == 0x123456)
+         {
+            my_putc('o');
+            my_putc('k');
+         }
+         else
+         {
+            my_putc('b');
+            my_putc('a');
+            my_putc('d');
+         }
+
+
+
+
+
 	if (actions & DO_CLOCKS) {
 		//system_clock_init();
 #ifdef CONFIG_DEBUG_UART
@@ -231,9 +253,27 @@ int do_lowlevel_init(void)
 #endif
         //uart_asm_init();
         //while(1);
-        //my_puts("wa ha ha\n");
+       
+       
+       
+
+       
+       
+       
+
+       
+       
+       
+       
+       
+       
+       
+       
+
+
 		//mem_ctrl_init(actions & DO_MEM_RESET);
-		//tzpc_init();
+		tzpc_init();
+        my_putc('w');
 	}
 
 	return actions & DO_WAKEUP;

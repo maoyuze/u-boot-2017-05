@@ -19,4 +19,9 @@ obj-y	+= spl_boot.o tzpc.o
 obj-y	+= lowlevel_init.o
 obj-y   += clock_init_tiny4412_c.o
 obj-y   += uart_init_c.o
+obj-y   += mem_init_tiny4412.o
+obj-y   += mem_init_tiny4412_r1.o
+obj-y   += mem_init_tiny4412_r2.o
+obj-y   += mem_asm_init_c.o
+obj-y   += my_puts.o
 endif

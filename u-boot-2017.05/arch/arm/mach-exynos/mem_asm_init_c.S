@@ -1,4 +1,4 @@
-
+.global mem_ctrl_asm_init
 mem_ctrl_asm_init:
 	ldr	r0, =0x110002C0
 	ldr	r1, [r0, #0x04]

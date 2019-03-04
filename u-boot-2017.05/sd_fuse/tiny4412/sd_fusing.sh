@@ -63,8 +63,10 @@ ${MKBL2} ${E4412_UBOOT_SPL} bl2.bin 14336
 
 signed_bl1_position=1
 bl2_position=17
-uboot_position=49
-tzsw_position=705
+#uboot_position=49
+#tzsw_position=705
+uboot_position=81
+tzsw_position=1105
 
 #<BL1 fusing>
 echo "---------------------------------------"
@@ -79,12 +81,12 @@ dd iflag=dsync oflag=dsync if=./bl2.bin of=$1 seek=$bl2_position
 #<u-boot fusing>
 echo "---------------------------------------"
 echo "u-boot fusing"
-#dd iflag=dsync oflag=dsync if=${E4412_UBOOT} of=$1 seek=$uboot_position
+dd iflag=dsync oflag=dsync if=${E4412_UBOOT} of=$1 seek=$uboot_position
 
 #<TrustZone S/W fusing>
 echo "---------------------------------------"
 echo "TrustZone S/W fusing"
-#dd iflag=dsync oflag=dsync if=./E4412_tzsw.bin of=$1 seek=$tzsw_position
+dd iflag=dsync oflag=dsync if=./E4412_tzsw.bin of=$1 seek=$tzsw_position
 
 #<flush to disk>
 sync

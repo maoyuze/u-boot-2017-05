@@ -282,5 +282,11 @@ fsdafsdfasdfsadfsd-----
 v310_2:
 #endif /* CONFIG_C2C */
 
+    ldr r0, =ELFIN_CLOCK_BASE
+     ldr r2, =CLK_DIV_FSYS2_OFFSET
+     ldr r1, [r0, r2]
+     orr r1, r1, #0xf
+     str r1, [r0, r2]
+
 	pop	{pc}
 

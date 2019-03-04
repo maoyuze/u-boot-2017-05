@@ -222,6 +222,8 @@ void copy_uboot_to_ram(void)
 		break;
 #endif
 	case BOOT_MODE_SD:
+        my_putc('s');
+        my_putc('d');
 		offset = BL2_START_OFFSET;
 		size = BL2_SIZE_BLOC_COUNT;
 		copy_bl2 = get_irom_func(MMC_INDEX);
@@ -255,7 +257,13 @@ void copy_uboot_to_ram(void)
 	}
 
 	if (copy_bl2)
-		copy_bl2(offset, size, CONFIG_SYS_TEXT_BASE);
+    {
+		//copy_bl2(offset, size, CONFIG_SYS_TEXT_BASE);
+        my_putc('\n');
+        my_putc('x');
+		copy_bl2(81,512*1024, CONFIG_SYS_TEXT_BASE);
+        my_putc('y');
+    }
 }
 
 void memzero(void *s, size_t n)
